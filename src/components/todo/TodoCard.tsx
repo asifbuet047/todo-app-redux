@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "../ui/button";
+import { useAppDispatch } from "@/redux/hooks";
+import { removeTodo } from "@/redux/features/todoSlice";
 
-function TodoCard({ title, description }) {
-  console.log(title, description);
+function TodoCard({ title, description, id }) {
+  const dispatch = useAppDispatch();
   return (
     <div className="bg-white rounded-md flex justify-between items-center p-3 border">
       <input type="checkbox" name="" id="" />
@@ -10,7 +12,7 @@ function TodoCard({ title, description }) {
       <p>Time</p>
       <p>{description}</p>
       <div className="space-x-5">
-        <Button className="bg-red-500">
+        <Button className="bg-red-500" onClick={() => dispatch(removeTodo(id))}>
           <svg
             className="size-5"
             data-slot="icon"

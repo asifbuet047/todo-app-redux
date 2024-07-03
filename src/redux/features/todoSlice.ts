@@ -4,6 +4,7 @@ interface TTodo {
   title: string;
   description: string;
   isCompleted?: boolean;
+  id?: number;
 }
 
 interface TInitialState {
@@ -21,7 +22,10 @@ const todoSlice = createSlice({
     addTodo: (state, action: PayloadAction<TTodo>) => {
       state.todos.push({ ...action.payload, isCompleted: false });
     },
+    removeTodo: (state, action: PayloadAction<number>) => {
+      state.todos = state.todos.filter((item) => item.id !== action.payload);
+    },
   },
 });
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 export const todoReducer = todoSlice.reducer;

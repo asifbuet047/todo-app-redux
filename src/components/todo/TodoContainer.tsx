@@ -1,7 +1,5 @@
-import React from "react";
 import TodoCard from "./TodoCard";
 import AddTodoModal from "./AddTodoModal";
-import { Button } from "../ui/button";
 import FilterTodoDropdownMenu from "./FilterTodoDropdownMenu";
 import { useAppSelector } from "@/redux/hooks";
 
@@ -16,7 +14,7 @@ function TodoContainer() {
       <div className="bg-primary-gradient  w-full h-[500px] rounded-xl p-5 space-y-5">
         <div className="bg-white p-5 w-full h-full rounded-lg space-y-3">
           {todos.map((item) => (
-            <TodoCard title={item.title} description={item.description} />
+            <TodoCard {...item} />
           ))}
         </div>
         {/* <div className="bg-white flex justify-center items-center rounded-md text-2xl font-bold">

@@ -22,15 +22,16 @@ function AddTodoModal() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log({ task, description });
-
+    const id: number = Math.floor(Math.random() * (1000 - 1) + 1);
     dispatch(
       addTodo({
         title: task,
         description,
+        id,
       })
     );
   };
+
   return (
     <Dialog>
       <DialogTrigger>
